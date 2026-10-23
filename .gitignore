@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+src-tauri/target/
+src-tauri/gen/schemas/
+coverage/
+*.tsbuildinfo
+
+# Local app data / databases — never commit user data
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.log
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+.env.*
+*.pfx
+*.p12
+*.key
+
+# Claude Code local settings
+.claude/settings.local.json

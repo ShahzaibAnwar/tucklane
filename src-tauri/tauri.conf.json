@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Tucklane",
+  "mainBinaryName": "Tucklane",
+  "version": "0.1.0",
+  "identifier": "io.github.tucklane.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Tucklane",
+        "width": 1240,
+        "height": 800,
+        "minWidth": 960,
+        "minHeight": 640,
+        "center": true,
+        "resizable": true,
+        "visible": false,
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src ipc: http://ipc.localhost",
+      "freezePrototype": true
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi"],
+    "publisher": "Tucklane Contributors",
+    "copyright": "Copyright (c) 2026 Tucklane Contributors. MIT License.",
+    "category": "Utility",
+    "shortDescription": "A privacy-first downloads organizer for Windows.",
+    "longDescription": "Tucklane organizes your Downloads folder with transparent rules, safe moves, duplicate detection and full undo. No accounts, no cloud uploads, no tracking.",
+    "homepage": "https://github.com/tucklane/tucklane",
+    "license": "MIT",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper" },
+      "nsis": {
+        "installMode": "currentUser",
+        "installerIcon": "icons/icon.ico",
+        "installerHooks": "./windows/hooks.nsh",
+        "displayLanguageSelector": false,
+        "startMenuFolder": "Tucklane"
+      },
+      "wix": {
+        "language": "en-US"
+      }
+    }
+  }
+}

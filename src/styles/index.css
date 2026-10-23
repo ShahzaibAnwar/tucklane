@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Design tokens. Light is the default; `.dark` on <html> switches. */
+:root {
+  --bg: #f7f9f8;
+  --surface: #ffffff;
+  --surface-2: #f0f4f2;
+  --surface-3: #e7eeeb;
+  --fg: #172421;
+  --muted: #5b6b66;
+  --subtle: #82918c;
+  --border: #e1e8e5;
+  --border-strong: #cbd6d2;
+  --brand: #123d38;
+  --brand-fg: #ffffff;
+  --accent: #50c7a3;
+  --accent-strong: #23866a;
+  --accent-soft: #e3f6ef;
+  --success: #2f8f6b;
+  --success-soft: #e4f4ec;
+  --warning: #a8670f;
+  --warning-soft: #fbf0dc;
+  --danger: #b93a2a;
+  --danger-soft: #fbe7e3;
+  --info: #2d6a8f;
+  --info-soft: #e4eff6;
+  --ring: #50c7a3;
+  --shadow: 0 1px 2px rgb(18 61 56 / 0.05), 0 4px 16px rgb(18 61 56 / 0.06);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #101715;
+  --surface: #192320;
+  --surface-2: #1f2b27;
+  --surface-3: #263430;
+  --fg: #e6eeeb;
+  --muted: #9aaba5;
+  --subtle: #74857f;
+  --border: #2a3833;
+  --border-strong: #37483f;
+  --brand: #50c7a3;
+  --brand-fg: #0d2421;
+  --accent: #50c7a3;
+  --accent-strong: #6fd6b6;
+  --accent-soft: #17352d;
+  --success: #5cc59a;
+  --success-soft: #16302a;
+  --warning: #e3a84e;
+  --warning-soft: #33291a;
+  --danger: #ee7d6c;
+  --danger-soft: #3a201c;
+  --info: #7cb7dc;
+  --info-soft: #182b37;
+  --ring: #50c7a3;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 6px 20px rgb(0 0 0 / 0.25);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-brand: var(--brand);
+  --color-brand-fg: var(--brand-fg);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ring: var(--ring);
+  --shadow-card: var(--shadow);
+  --font-sans:
+    "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display:
+    "Segoe UI Variable Display", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, ui-monospace, monospace;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    overflow: hidden;
+  }
+  input,
+  textarea,
+  [data-selectable] {
+    user-select: text;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .tl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+  .tl-num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes tl-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.tl-enter {
+  animation: tl-fade-in 180ms ease-out both;
+}
+
+@keyframes tl-overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes tl-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.tl-overlay {
+  animation: tl-overlay 150ms ease-out;
+}
+.tl-dialog {
+  animation: tl-pop 160ms ease-out;
+}

@@ -1,0 +1,47 @@
+name: Release
+
+# Builds installers for a version tag and creates a DRAFT GitHub release.
+# A maintainer reviews and publishes it manually.
+on:
+  push:
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+      - run: npm ci
+      - name: Verify versions match the tag
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}".TrimStart('v')
+          $pkg = (Get-Content package.json | ConvertFrom-Json).version
+          $conf = (Get-Content src-tauri/tauri.conf.json | ConvertFrom-Json).version
+          $cargo = (Select-String -Path src-tauri/Cargo.toml -Pattern '^version = "(.+)"').Matches[0].Groups[1].Value
+          if ($pkg -ne $tag -or $conf -ne $tag -or $cargo -ne $tag) { throw "Version mismatch: tag=$tag package=$pkg conf=$conf cargo=$cargo" }
+      - run: npm test
+      - working-directory: src-tauri
+        run: cargo test --locked
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: Tucklane ${{ github.ref_name }}
+          releaseBody: See CHANGELOG.md. Builds are not code-signed; Windows SmartScreen may warn on first run.
+          releaseDraft: true
+          prerelease: false

@@ -1,0 +1,21 @@
+name: Feature request
+description: Suggest an idea for Tucklane
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Principles
+      options:
+        - label: This works locally without uploading files or file names anywhere.
+        - label: This keeps every change previewable and reversible.
