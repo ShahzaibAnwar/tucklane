@@ -34,12 +34,12 @@
   "bundle": {
     "active": true,
     "targets": ["nsis", "msi"],
-    "publisher": "Tucklane Contributors",
-    "copyright": "Copyright (c) 2026 Tucklane Contributors. MIT License.",
+    "publisher": "Shahzaib Anwar",
+    "copyright": "Copyright (c) 2026 Shahzaib Anwar. MIT License.",
     "category": "Utility",
     "shortDescription": "A privacy-first downloads organizer for Windows.",
     "longDescription": "Tucklane organizes your Downloads folder with transparent rules, safe moves, duplicate detection and full undo. No accounts, no cloud uploads, no tracking.",
-    "homepage": "https://github.com/tucklane/tucklane",
+    "homepage": "https://github.com/ShahzaibAnwar/tucklane",
     "license": "MIT",
     "icon": [
       "icons/32x32.png",

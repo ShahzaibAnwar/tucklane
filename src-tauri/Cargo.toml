@@ -2,9 +2,10 @@
 name = "tucklane"
 version = "0.1.0"
 description = "A privacy-first downloads organizer for Windows."
-authors = ["Tucklane Contributors"]
+authors = ["Shahzaib Anwar <shahzaib@dareecha.pk>"]
+homepage = "https://github.com/ShahzaibAnwar/tucklane"
 license = "MIT"
-repository = "https://github.com/tucklane/tucklane"
+repository = "https://github.com/ShahzaibAnwar/tucklane"
 edition = "2021"
 rust-version = "1.85"
 

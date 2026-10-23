@@ -7,6 +7,11 @@
 <p align="center">
   Privacy-first Windows download organizer with automatic sorting, custom rules, duplicate detection, and undo.
 </p>
+<p align="center">
+  <a href="https://github.com/ShahzaibAnwar/tucklane/releases">Download</a> ·
+  <a href="docs/USER_GUIDE.md">User guide</a> ·
+  <a href="#author">Author</a>
+</p>
 
 ---
 
@@ -63,7 +68,7 @@ Windows 10 and Windows 11, x64. Requires the Microsoft Edge WebView2 Runtime
 ## Install
 
 1. Download `Tucklane_0.1.0_x64-setup.exe` from
-   [Releases](https://github.com/tucklane/tucklane/releases).
+   [Releases](https://github.com/ShahzaibAnwar/tucklane/releases).
 2. Run it. It installs for your user account only — no administrator rights.
 3. **SmartScreen:** releases are currently **not code-signed**, so Windows may
    show "Windows protected your PC". Choose *More info → Run anyway* if you trust
@@ -119,7 +124,7 @@ No accounts. No cloud uploads. No tracking. Your files stay on your computer.
 Prerequisites: Rust (MSVC), Visual Studio 2022 Build Tools (C++), Node.js 22.
 
 ```bash
-git clone https://github.com/tucklane/tucklane.git
+git clone https://github.com/ShahzaibAnwar/tucklane.git
 cd tucklane
 npm ci
 npm run tauri build
@@ -173,6 +178,18 @@ Please report vulnerabilities privately — see [SECURITY.md](SECURITY.md).
 
 See [docs/ROADMAP.md](docs/ROADMAP.md).
 
+## Author
+
+Created with ❤️ by **Shahzaib Anwar**
+
+* GitHub: [@ShahzaibAnwar](https://github.com/ShahzaibAnwar)
+* LinkedIn: [linkedin.com/in/shahzaibanwar](https://www.linkedin.com/in/shahzaibanwar)
+* Website: [dareecha.pk](https://dareecha.pk/)
+* Email: [shahzaib@dareecha.pk](mailto:shahzaib@dareecha.pk)
+
+If Tucklane helps you, a ⭐ on
+[GitHub](https://github.com/ShahzaibAnwar/tucklane) is appreciated.
+
 ## License
 
-[MIT](LICENSE) © Tucklane Contributors
+[MIT](LICENSE) — Copyright (c) 2026 Shahzaib Anwar

@@ -99,7 +99,8 @@ export const api = {
     invoke<void>("open_file", { rel, confirmedExecutable }),
   reveal: (rel: string) => invoke<void>("reveal_in_explorer", { rel }),
   openRoot: () => invoke<void>("open_root_folder"),
-  openProjectPage: () => invoke<void>("open_project_page"),
+  openAboutLink: (link: "project" | "releases" | "github" | "linkedin" | "website" | "email") =>
+    invoke<void>("open_about_link", { link }),
   absolutePath: (rel: string) => invoke<string>("get_absolute_path", { rel }),
   thumbnail: (rel: string) => invoke<string | null>("get_thumbnail", { rel }),
   exclude: (rels: string[]) => invoke<void>("exclude_files", { rels }),

@@ -4,6 +4,19 @@
   "version": "0.1.0",
   "description": "A privacy-first downloads organizer for Windows.",
   "license": "MIT",
+  "author": {
+    "name": "Shahzaib Anwar",
+    "email": "shahzaib@dareecha.pk",
+    "url": "https://dareecha.pk/"
+  },
+  "homepage": "https://github.com/ShahzaibAnwar/tucklane",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShahzaibAnwar/tucklane.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShahzaibAnwar/tucklane/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

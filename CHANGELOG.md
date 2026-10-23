@@ -39,5 +39,5 @@ First release.
   themes.
 * Windows NSIS (per-user) and MSI installers.
 
-[Unreleased]: https://github.com/tucklane/tucklane/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/tucklane/tucklane/releases/tag/v0.1.0
+[Unreleased]: https://github.com/ShahzaibAnwar/tucklane/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/ShahzaibAnwar/tucklane/releases/tag/v0.1.0

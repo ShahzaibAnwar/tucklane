@@ -71,7 +71,7 @@ Legend: ✅ done · 🟡 partial · ⛔ not implemented
 | Release workflow (draft release) | ✅ | Not yet run |
 | NSIS installer | ✅ Verified | Silent install/uninstall on Windows 11: per-user, no admin, Start Menu shortcut, uninstall entry (version + publisher), startup Run key removed on uninstall, app data kept, user files untouched |
 | MSI installer | 🟡 | Builds; not install-tested. Does not run the NSIS uninstall hook (documented) |
-| Exe/installer icon and version metadata | ✅ Verified | Icon extracted from installed exe and setup exe; FileVersion 0.1.0, CompanyName "Tucklane Contributors". FileDescription is "Tucklane" (Tauri uses the product name) |
+| Exe/installer icon and version metadata | ✅ Verified | Icon extracted from installed exe and setup exe; FileVersion 0.1.0, CompanyName "Shahzaib Anwar". FileDescription is "Tucklane" (Tauri uses the product name) |
 | Real-app smoke test | ✅ Verified | Onboarding with sandbox folder, analysis, preview, organize (22 files), undo session, dashboard, explorer, duplicates, activity, dark theme, close-to-tray, single instance, quit |
 | Independent code review | ✅ | 6 findings (quit deadlock, FAT/exFAT recording, Recycle Bin on removable drives, open-confirmation gaps, cross-root history, `ß` comparison) — all fixed |
 | Code signing | ⛔ | Not configured; SmartScreen limitation documented |

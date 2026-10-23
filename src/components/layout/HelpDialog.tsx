@@ -1,5 +1,6 @@
 import { Dialog } from "@/components/ui/dialog";
 import { Kbd } from "@/components/ui/primitives";
+import { AuthorLinks, CreatedBy } from "@/components/common/AuthorCredit";
 import { NAV } from "./nav";
 
 export function HelpDialog({
@@ -59,6 +60,10 @@ export function HelpDialog({
               </span>
             </div>
           </div>
+        </section>
+        <section className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
+          <CreatedBy />
+          <AuthorLinks compact />
         </section>
       </div>
     </Dialog>

@@ -18,7 +18,7 @@
 ## Publisher identity
 
 The publisher shown in *Installed apps* is `bundle.publisher` in
-`src-tauri/tauri.conf.json` (default: "Tucklane Contributors"). Change it if
+`src-tauri/tauri.conf.json` (default: "Shahzaib Anwar"). Change it if
 you distribute your own build.
 
 ## Code signing

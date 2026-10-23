@@ -255,7 +255,7 @@ pub fn run() {
             commands::files::open_file,
             commands::files::reveal_in_explorer,
             commands::files::open_root_folder,
-            commands::files::open_project_page,
+            commands::files::open_about_link,
             commands::files::get_absolute_path,
             commands::files::get_thumbnail,
             commands::files::exclude_files,

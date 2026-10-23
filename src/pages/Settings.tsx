@@ -18,6 +18,8 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Badge, Card, Field, Input, Select, Switch } from "@/components/ui/primitives";
 import { ConfirmDialog } from "@/components/ui/dialog";
+import { LogoMark } from "@/components/common/Logo";
+import { AuthorLinks, CreatedBy, openAboutLink } from "@/components/common/AuthorCredit";
 import { toast } from "@/components/ui/toast";
 import { winPath, timeAgo } from "@/lib/format";
 import { cn } from "@/lib/cn";
@@ -602,28 +604,42 @@ export function SettingsPage() {
 
           <Card ref={sectionRef("About")} className="px-5 py-4">
             <h2 className="text-[15px] font-semibold">About</h2>
-            <dl className="mt-2 grid grid-cols-[140px_1fr] gap-y-1.5 text-[13px]">
-              <dt className="text-muted">Version</dt>
-              <dd>{status.version}</dd>
+            <div className="mt-3 flex items-center gap-3.5 rounded-xl border border-border bg-surface-2/60 p-4">
+              <LogoMark size={48} />
+              <div className="min-w-0">
+                <div className="font-display text-[17px] font-semibold">
+                  Tucklane{" "}
+                  <span className="text-[13px] font-normal text-muted">v{status.version}</span>
+                </div>
+                <p className="text-[12.5px] text-muted">A quieter place for your downloads.</p>
+                <CreatedBy className="mt-1" />
+              </div>
+            </div>
+            <div className="mt-3">
+              <AuthorLinks />
+            </div>
+            <dl className="mt-4 grid grid-cols-[140px_1fr] gap-y-1.5 text-[13px]">
               <dt className="text-muted">License</dt>
-              <dd>MIT — free and open source</dd>
+              <dd>MIT — free and open source. Copyright © 2026 Shahzaib Anwar.</dd>
               <dt className="text-muted">Source code</dt>
               <dd>
                 <button
                   className="inline-flex items-center gap-1 text-accent-strong hover:underline"
-                  onClick={() =>
-                    void api
-                      .openProjectPage()
-                      .catch((e) => toast.error("Could not open link", errorMessage(e)))
-                  }
+                  onClick={() => openAboutLink("project")}
                 >
-                  github.com/tucklane/tucklane <ExternalLink className="size-3" />
+                  github.com/ShahzaibAnwar/tucklane <ExternalLink className="size-3" />
                 </button>
               </dd>
               <dt className="text-muted">Release notes</dt>
               <dd className="text-muted">
                 0.1.0 — first public release: safe organizing with preview and undo, rules,
-                monitoring, duplicate finder, tray.
+                monitoring, duplicate finder, tray.{" "}
+                <button
+                  className="inline-flex items-center gap-1 text-accent-strong hover:underline"
+                  onClick={() => openAboutLink("releases")}
+                >
+                  All releases <ExternalLink className="size-3" />
+                </button>
               </dd>
               <dt className="text-muted">Credits</dt>
               <dd className="text-muted">

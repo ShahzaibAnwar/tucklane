@@ -193,14 +193,26 @@ pub async fn open_root_folder(app: AppHandle) -> AppResult<()> {
     run(app, |app, _| open_root(app)).await
 }
 
-pub const PROJECT_URL: &str = "https://github.com/tucklane/tucklane";
+/// Links shown in Settings › About. The frontend can only pick one of these
+/// by name; it cannot open arbitrary URLs.
+fn about_link(name: &str) -> Option<&'static str> {
+    Some(match name {
+        "project" => "https://github.com/ShahzaibAnwar/tucklane",
+        "releases" => "https://github.com/ShahzaibAnwar/tucklane/releases",
+        "github" => "https://github.com/ShahzaibAnwar",
+        "linkedin" => "https://www.linkedin.com/in/shahzaibanwar",
+        "website" => "https://dareecha.pk/",
+        "email" => "mailto:shahzaib@dareecha.pk",
+        _ => return None,
+    })
+}
 
-/// Opens the project's GitHub page in the default browser. The URL is fixed;
-/// the frontend cannot open arbitrary URLs.
+/// Opens one of the fixed About links in the default browser or mail app.
 #[tauri::command]
-pub async fn open_project_page(app: AppHandle) -> AppResult<()> {
+pub async fn open_about_link(app: AppHandle, link: String) -> AppResult<()> {
+    let url = about_link(&link).ok_or_else(|| AppError::invalid("Unknown link."))?;
     app.opener()
-        .open_url(PROJECT_URL, None::<&str>)
+        .open_url(url, None::<&str>)
         .map_err(|e| AppError::Io(e.to_string()))
 }
 
@@ -295,6 +307,13 @@ pub async fn get_exclusions(app: AppHandle) -> AppResult<Vec<ExclusionRecord>> {
 #[cfg(test)]
 mod tests {
     use super::opens_without_confirmation as ok;
+
+    #[test]
+    fn about_links_are_a_fixed_allowlist() {
+        assert_eq!(super::about_link("email"), Some("mailto:shahzaib@dareecha.pk"));
+        assert!(super::about_link("https://evil.example").is_none());
+        assert!(super::about_link("").is_none());
+    }
 
     #[test]
     fn only_passive_files_open_without_confirmation() {
