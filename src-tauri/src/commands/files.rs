@@ -310,7 +310,10 @@ mod tests {
 
     #[test]
     fn about_links_are_a_fixed_allowlist() {
-        assert_eq!(super::about_link("email"), Some("mailto:shahzaib@dareecha.pk"));
+        assert_eq!(
+            super::about_link("email"),
+            Some("mailto:shahzaib@dareecha.pk")
+        );
         assert!(super::about_link("https://evil.example").is_none());
         assert!(super::about_link("").is_none());
     }
